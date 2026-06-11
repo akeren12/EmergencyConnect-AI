@@ -5,11 +5,13 @@ from rest_framework.permissions import IsAuthenticated
 from .models import (
     EmergencyContact,
     EmergencyReport,
+    SafetyTip
 )
 
 from .serializers import (
     EmergencyContactSerializer,
     EmergencyReportSerializer,
+    SafetyTipSerializer,
 )
 
 
@@ -48,3 +50,11 @@ class EmergencyReportViewSet(viewsets.ModelViewSet):
         "emergency_type",
         "severity",
     ]
+
+class SafetyTipViewSet(viewsets.ModelViewSet):
+
+    queryset=SafetyTip.objects.all()
+
+    serializer_class=SafetyTipSerializer
+
+    permission_classes=[IsAuthenticated]

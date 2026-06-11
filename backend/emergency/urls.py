@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     EmergencyContactViewSet,
     EmergencyReportViewSet,
+    SafetyTipViewSet,
 )
 
 router = DefaultRouter()
@@ -18,5 +19,16 @@ router.register(
     EmergencyReportViewSet,
     basename="reports",
 )
+
+router.register(
+
+r"tips",
+
+SafetyTipViewSet,
+
+basename="tips"
+
+)
+
 
 urlpatterns = router.urls
