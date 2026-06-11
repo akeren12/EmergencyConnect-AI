@@ -34,7 +34,7 @@ SUPABASE_KEY = env(
     default="dummy_key"
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
