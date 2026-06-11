@@ -24,10 +24,17 @@ SECRET_KEY = env(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
 
-SUPABASE_URL = env("SUPABASE_URL")
-SUPABASE_KEY = env("SUPABASE_KEY")
+SUPABASE_URL = env(
+    "SUPABASE_URL",
+    default="https://example.supabase.co"
+)
 
-ALLOWED_HOSTS = []
+SUPABASE_KEY = env(
+    "SUPABASE_KEY",
+    default="dummy_key"
+)
+
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -78,7 +85,10 @@ WSGI_APPLICATION = "emergencyconnect.wsgi.application"
 # Database
 
 DATABASES = {
-    "default": env.db("DATABASE_URL")
+    "default": env.db(
+        "DATABASE_URL",
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
 }
 
 # Password validation
