@@ -25,4 +25,5 @@ urlpatterns = [
     path( "api/emergency/",include("emergency.urls")),
     path("api/token/",TokenObtainPairView.as_view()),
     path("api/token/refresh/",TokenRefreshView.as_view()),
+    path("api/ai/",include("ai_assistant.urls")),
 ]
