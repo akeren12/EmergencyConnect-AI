@@ -1,4 +1,6 @@
-# EmergencyConnect AI
+# EmergencyConnect-AI
+
+[![Django CI](https://github.com/akeren12/EmergencyConnect-AI/actions/workflows/django.yml/badge.svg)](https://github.com/akeren12/EmergencyConnect-AI/actions/workflows/django.yml)
 
 EmergencyConnect AI is an AI-powered emergency assistance platform designed to help users during medical emergencies, accidents, and disaster situations.
 
