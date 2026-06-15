@@ -1,5 +1,6 @@
 from django.urls import path
+from .views import AIAnalysisView
 
 urlpatterns = [
-    # AI endpoints will be added here
+    path("analyze/", AIAnalysisView.as_view(), name="ai-analysis"),
 ]
