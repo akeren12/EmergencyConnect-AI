@@ -1,11 +1,9 @@
-
-"""
-Django settings for emergencyconnect project.
-"""
-
 from pathlib import Path
 import environ
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +30,11 @@ SUPABASE_URL = env(
 SUPABASE_KEY = env(
     "SUPABASE_KEY",
     default="dummy_key"
+)
+
+GEMINI_API_KEY = env(
+    "GEMINI_API_KEY",
+    default=""
 )
 
 ALLOWED_HOSTS = ["*"]
