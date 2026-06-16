@@ -1,6 +1,7 @@
 from google import genai
+import os
 
-API_KEY = "AQ.Ab8RN6Jp9NTlee4MRqziiqHJsZH50UhCF3EM2kZyt9O4lP1KNg"
+API_KEY = os.getenv("GEMINI_API_KEY")
 
 client = genai.Client(api_key=API_KEY)
 

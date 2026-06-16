@@ -130,29 +130,28 @@ def fallback_response():
 
 def save_to_supabase(user_input, ai_output):
 
+    print(">>> save_to_supabase() called")
+
     try:
+
         data = {
             "user_input": user_input,
             "ai_output": json.dumps(ai_output),
             "created_at": datetime.utcnow().isoformat()
         }
 
-        print("=" * 50)
-        print("Saving to Supabase...")
-        print(data)
+        print(">>> Data:", data)
 
         response = supabase.table("ai_logs").insert(data).execute()
 
-        print("Insert Success!")
+        print(">>> INSERT SUCCESS")
         print(response)
-        print("=" * 50)
 
     except Exception as e:
-        print("=" * 50)
-        print("Supabase Error:")
+
+        print(">>> INSERT FAILED")
         print(type(e))
-        print(str(e))
-        print("=" * 50)
+        print(e)
 
 # ======================================================
 # Parse Gemini JSON
@@ -179,7 +178,7 @@ def parse_json(text):
 # ======================================================
 
 def generate_ai_response(user_message):
-
+    print("generate_ai_response() called")
     try:
 
         if not user_message:
