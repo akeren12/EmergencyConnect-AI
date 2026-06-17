@@ -1,170 +1,236 @@
+# 🚨 EmergencyConnect-AI
 
-#🚨 EmergencyConnect-AI
-
-AI-powered Emergency Assistance Backend built with Django REST Framework, Gemini AI, and Supabase.
-
-EmergencyConnect-AI analyzes emergency descriptions, classifies emergency types, determines priority levels, and provides immediate first-aid recommendations using Generative AI.
-
-
-## Badges
+> **AI-Powered Emergency Assistance Backend built with Django REST Framework, Gemini AI & Supabase**
 
 [![Django CI](https://github.com/akeren12/EmergencyConnect-AI/actions/workflows/django.yml/badge.svg)](https://github.com/akeren12/EmergencyConnect-AI/actions/workflows/django.yml)
-
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-
 ![Django](https://img.shields.io/badge/Django-5.2-092E20?logo=django)
-
-![DRF](https://img.shields.io/badge/Django_REST_Framework-API-red)
-
-![Gemini](https://img.shields.io/badge/Gemini-AI-4285F4)
-
+![DRF](https://img.shields.io/badge/DRF-REST_API-red)
+![Gemini AI](https://img.shields.io/badge/Gemini-AI-4285F4)
 ![Supabase](https://img.shields.io/badge/Supabase-Database-3ECF8E)
-
 ![Swagger](https://img.shields.io/badge/API-Swagger-85EA2D)
-
 ![MkDocs](https://img.shields.io/badge/Documentation-MkDocs-blue)
-## About
-EmergencyConnect-AI is an intelligent emergency assistance backend that leverages Generative AI to provide quick emergency classification and first-aid guidance.
 
-Features:
+---
 
-• Emergency Type Classification
+## 📌 Overview
 
-• Priority Detection
+EmergencyConnect-AI is an intelligent emergency assistance backend that leverages **Generative AI** to provide quick emergency classification and first-aid guidance.
 
-• AI-generated Emergency Summary
+Given a user's emergency description, the system:
 
-• First Aid Recommendations
+- 🚑 Classifies the emergency type
+- ⚠️ Determines the priority level
+- 📝 Generates a concise emergency summary
+- 🩺 Provides immediate first-aid recommendations
+- ☁️ Stores AI responses for future analysis
 
-• Supabase Logging
+---
 
-• Swagger Documentation
+## ✨ Features
 
-• MkDocs Documentation
-## Tech Stack
+| Feature | Description |
+|----------------------------|---------------------------------------------|
+| 🤖 AI Emergency Analysis | Understands natural language emergencies |
+| 🚑 Emergency Classification | Identifies emergency category |
+| ⚠️ Priority Detection | LOW / MEDIUM / HIGH / CRITICAL |
+| 🩺 First Aid Assistance | Immediate safety recommendations |
+| 📚 Swagger Documentation | Interactive API testing |
+| 📖 MkDocs Documentation | Complete project documentation |
+| ☁️ Supabase Integration | Cloud database logging |
+| 🔄 Retry & Fallback Logic | Handles AI/API failures gracefully |
 
-**Backend**
+---
 
-- Python
-- Django
-- Django REST Framework
+## 🛠 Tech Stack
 
-**AI**
+| Category | Technologies |
+|----------------|--------------------------------|
+| **Backend** | Python, Django, Django REST Framework |
+| **AI** | Gemini AI |
+| **Database** | Supabase, PostgreSQL, SQLite |
+| **Documentation** | Swagger (drf-spectacular), MkDocs |
 
-- Gemini AI
+---
 
-**Database**
+## 🏗 Architecture
 
-- Supabase
-- PostgreSQL / SQLite
+```text
+             User
+                │
+                ▼
+       Django REST API
+                │
+                ▼
+         Gemini AI Service
+                │
+                ▼
+      Emergency Classification
+                │
+                ▼
+        Structured JSON Output
+                │
+                ▼
+         Supabase Logging
+```
 
-**Documentation**
+---
 
-- drf-spectacular (Swagger)
-- MkDocs
+## 📂 Project Structure
 
+```text
+backend/
+│
+├── ai_assistant/
+├── emergency/
+├── users/
+├── emergencyconnect/
+├── docs/
+│   ├── index.md
+│   ├── installation.md
+│   ├── api.md
+│   ├── ai_module.md
+│   └── deployment.md
+│
+├── manage.py
+├── requirements.txt
+├── mkdocs.yml
+└── README.md
+```
 
-## API Reference
+---
 
-### POST /api/ai/analyze/
+## 🚀 Installation
 
-Analyzes emergency descriptions and returns:
+Clone the repository
 
-- emergency type
-- priority
-- summary
-- first aid recommendations
-
-Example Request
-
-{
-    "description":"A person is unconscious and not breathing."
-}
-
-Example Response
-
-{
-    "emergency_type":"Cardiac Arrest",
-    "priority":"CRITICAL",
-    "summary":"Person appears unconscious.",
-    "first_aid":[
-        "Call emergency services",
-        "Begin CPR",
-        "Use AED if available"
-    ]
-}
-
-
-## Installation
-
+```bash
 git clone https://github.com/akeren12/EmergencyConnect-AI.git
 
 cd EmergencyConnect-AI/backend
+```
 
+Create virtual environment
+
+```bash
 python -m venv venv
+```
 
+Windows
+
+```bash
 venv\Scripts\activate
+```
 
+Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+Run migrations
+
+```bash
 python manage.py migrate
+```
 
+Start server
+
+```bash
 python manage.py runserver
-    
-## Documentation
+```
 
-Swagger UI
+---
 
-http://127.0.0.1:8000/api/schema/swagger-ui/
+## 📡 API Endpoints
 
-OpenAPI Schema
+| Method | Endpoint | Description |
+|------------|---------------------------|----------------------------|
+| POST | `/api/ai/analyze/` | Analyze emergency description |
+| GET | `/api/schema/` | OpenAPI Schema |
+| GET | `/api/schema/swagger-ui/` | Swagger Documentation |
 
-http://127.0.0.1:8000/api/schema/
+---
 
-MkDocs
+## 🤖 Sample Request
 
-mkdocs serve
+```json
+{
+    "description": "A person is unconscious and not breathing."
+}
+```
 
+---
 
-## Features
+## ✅ Sample Response
 
-✅ AI Emergency Analysis
+```json
+{
+    "emergency_type": "Cardiac Arrest",
+    "priority": "CRITICAL",
+    "summary": "The person appears to be in cardiac arrest.",
+    "first_aid": [
+        "Call emergency services immediately.",
+        "Begin CPR if trained.",
+        "Use an AED if available."
+    ]
+}
+```
 
-✅ Emergency Classification
+---
 
-✅ Priority Detection
+## 📚 Documentation
 
-✅ First Aid Recommendations
+| Documentation | Link |
+|----------------------|----------------------------------|
+| Swagger UI | `/api/schema/swagger-ui/` |
+| OpenAPI Schema | `/api/schema/` |
+| MkDocs | `mkdocs serve` |
 
-✅ REST APIs
+---
 
-✅ Swagger Documentation
+## 🚀 Current Status
 
-✅ MkDocs Documentation
+| Module | Status |
+|----------------------------|------------|
+| Django Backend | ✅ Completed |
+| REST APIs | ✅ Completed |
+| Gemini AI Integration | ✅ Completed |
+| Swagger Documentation | ✅ Completed |
+| MkDocs Documentation | ✅ Completed |
+| Supabase Integration | ✅ Completed |
+| Retry & Fallback Logic | ✅ Completed |
+| Deployment | 🔄 In Progress |
 
-✅ Supabase Integration
+---
 
-✅ Retry & Fallback Logic
+## 🔮 Future Enhancements
 
+- 📱 One-Tap SOS
+- 🎤 Voice Emergency Detection
+- 🏥 Nearby Hospital Locator
+- 🩸 Blood Bank Recommendations
+- 💊 Pharmacy Recommendations
+- 🌍 Multilingual Support
+- 📍 Live Location Sharing
+- 🚨 AI-generated SOS Messages
 
-## Future Scope
+---
 
-- One-Tap SOS
+## 👩‍💻 Author
 
-- Voice Emergency Detection
-
-- Nearby Hospital Locator
-
-- Blood Bank Recommendations
-
-- Pharmacy Recommendations
-
-- AI-generated SOS Messages
-## Authors
-
-Aksa Elsa
+**Aksa Elsa**
 
 B.Tech Computer Science & Engineering (Data Science)
 
-Django | REST API | Artificial Intelligence | Generative AI
+**AI • Django • REST APIs • Generative AI**
 
+---
+
+<div align="center">
+
+⭐ If you found this project useful, consider giving it a star!
+
+Built with ❤️ using Django REST Framework & Gemini AI
+
+</div>
