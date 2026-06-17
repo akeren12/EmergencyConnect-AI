@@ -43,18 +43,30 @@ MAX_RETRIES = 3
 # Gemini Client
 # ======================================================
 
-client = genai.Client(
-    api_key=GEMINI_API_KEY
-)
+def get_gemini_client():
+
+    if not GEMINI_API_KEY:
+        return None
+
+    try:
+        return genai.Client(api_key=GEMINI_API_KEY)
+    except Exception:
+        return None
+
 
 # ======================================================
 # Supabase Client
 # ======================================================
 
-supabase: Client = create_client(
-    SUPABASE_URL,
-    SUPABASE_KEY
-)
+def get_supabase_client():
+
+    if not SUPABASE_URL or not SUPABASE_KEY:
+        return None
+
+    try:
+        return create_client(SUPABASE_URL, SUPABASE_KEY)
+    except Exception:
+        return None
 
 # ======================================================
 # System Prompt
@@ -130,7 +142,11 @@ def fallback_response():
 
 def save_to_supabase(user_input, ai_output):
 
-    print(">>> save_to_supabase() called")
+    supabase = get_supabase_client()
+
+    if supabase is None:
+        print(">>> Supabase not configured. Skipping save.")
+        return
 
     try:
 
@@ -140,9 +156,12 @@ def save_to_supabase(user_input, ai_output):
             "created_at": datetime.utcnow().isoformat()
         }
 
-        print(">>> Data:", data)
-
-        response = supabase.table("ai_logs").insert(data).execute()
+        response = (
+            supabase
+            .table("ai_logs")
+            .insert(data)
+            .execute()
+        )
 
         print(">>> INSERT SUCCESS")
         print(response)
@@ -150,7 +169,6 @@ def save_to_supabase(user_input, ai_output):
     except Exception as e:
 
         print(">>> INSERT FAILED")
-        print(type(e))
         print(e)
 
 # ======================================================
@@ -179,6 +197,20 @@ def parse_json(text):
 
 def generate_ai_response(user_message):
     print("generate_ai_response() called")
+    client = get_gemini_client()
+
+    if client is None:
+
+        print("Gemini API key not configured.")
+
+        fallback = fallback_response()
+
+        save_to_supabase(
+            user_input=user_message,
+            ai_output=fallback
+        )
+
+        return fallback
     try:
 
         if not user_message:
@@ -269,34 +301,33 @@ User Emergency:
 
 def health_check():
 
+    client = get_gemini_client()
+
+    if client is None:
+
+        return {
+            "status": "offline",
+            "message": "Gemini API key not configured"
+        }
+
     try:
 
         response = client.models.generate_content(
-
             model=MODEL_NAME,
-
             contents="Reply with OK"
-
         )
 
         return {
-
             "status": "online",
-
             "message": response.text
-
         }
 
     except Exception:
 
         return {
-
             "status": "offline",
-
             "message": "Gemini unavailable"
-
         }
-
 # ======================================================
 # Local Testing
 # ======================================================

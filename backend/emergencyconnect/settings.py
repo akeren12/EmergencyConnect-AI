@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "users",
     "emergency",
     "ai_assistant",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,20 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "EmergencyConnect-AI API",
+    "DESCRIPTION": "AI-powered emergency assistance backend built with Django REST Framework",
+    "VERSION": "1.0.0",
 }

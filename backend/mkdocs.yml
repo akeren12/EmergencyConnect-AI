@@ -1,0 +1,13 @@
+site_name: EmergencyConnect-AI
+
+site_description: AI-powered emergency assistance backend built with Django REST Framework and Gemini AI
+
+theme:
+  name: mkdocs
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - API Documentation: api.md
+  - AI Module: ai_module.md
+  - Deployment: deployment.md
