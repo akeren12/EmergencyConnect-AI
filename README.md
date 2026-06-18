@@ -145,7 +145,7 @@ python manage.py runserver
 
 | Swagger UI | MkDocs Documentation |
 |------------|---------------------|
-| ![Swagger UI](docs/images/swagger-ui.png) | ![MkDocs Documentation](docs/images/mkdocs-home.png) |
+| ![Swagger UI](docs/swagger-ui.png) | ![MkDocs Documentation](docs/mkdocs-home.png) |
 docs/images/mkdocs-home.png
 ```
 ## 📡 API Endpoints
