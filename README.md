@@ -160,7 +160,19 @@ docs/images/mkdocs-home.png
 | GET | `/api/schema/swagger-ui/` | Swagger Documentation |
 
 ---
+## 📚 API Documentation
 
+### Swagger UI
+
+http://127.0.0.1:8000/api/schema/swagger-ui/
+
+Interactive OpenAPI documentation generated using drf-spectacular.
+
+### Postman Collection
+
+Available in:
+
+docs/postman/EmergencyConnect-AI.postman_collection.json
 ## 🤖 Sample Request
 
 ```json
