@@ -145,7 +145,6 @@ python manage.py runserver
 
 ### Swagger UI
 
-> Add screenshot here
 
 ```
 docs/images/swagger-ui.png
@@ -153,7 +152,7 @@ docs/images/swagger-ui.png
 
 ### MkDocs Documentation
 
-> Add screenshot here
+
 
 ```
 docs/images/mkdocs-home.png
