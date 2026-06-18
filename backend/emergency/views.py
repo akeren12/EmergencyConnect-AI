@@ -1,3 +1,6 @@
+"""
+Views for emergency reports and resources.
+"""
 from rest_framework import viewsets, filters
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated

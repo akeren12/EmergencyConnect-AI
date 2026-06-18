@@ -1,3 +1,6 @@
+"""
+Database models for emergency resources and reports.
+"""
 from django.db import models
 
 class EmergencyContact(models.Model):

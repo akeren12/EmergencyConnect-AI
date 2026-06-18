@@ -1,3 +1,6 @@
+"""
+Serializers for emergency application models.
+"""
 from rest_framework import serializers
 from .models import EmergencyContact
 from .models import EmergencyReport
