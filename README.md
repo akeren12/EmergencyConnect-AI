@@ -141,7 +141,23 @@ python manage.py runserver
 ```
 
 ---
+## 📸 Screenshots
 
+### Swagger UI
+
+> Add screenshot here
+
+```
+docs/images/swagger-ui.png
+```
+
+### MkDocs Documentation
+
+> Add screenshot here
+
+```
+docs/images/mkdocs-home.png
+```
 ## 📡 API Endpoints
 
 | Method | Endpoint | Description |
@@ -216,6 +232,16 @@ python manage.py runserver
 - 🚨 AI-generated SOS Messages
 
 ---
+## 🌐 Live Demo
+
+Deployment in progress.
+
+```
+Live URL:
+https://your-live-url.com
+```
+
+*(Replace after deployment.)*
 
 ## 👩‍💻 Author
 
