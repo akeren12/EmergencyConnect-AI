@@ -56,7 +56,7 @@ Given a user's emergency description, the system:
 
 ## 🏗 Architecture
 
-'''
+```
              User
                 │
                 ▼
@@ -75,7 +75,6 @@ Given a user's emergency description, the system:
          Supabase Logging
 
 
-```
 ```
 
 ---
