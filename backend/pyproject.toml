@@ -1,0 +1,9 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "emergencyconnect.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+addopts = "--cov=users --cov=emergency --cov=ai_assistant --cov-report=term --cov-report=html"
+
+[tool.coverage.run]
+omit = [
+    "*/migrations/*"
+]

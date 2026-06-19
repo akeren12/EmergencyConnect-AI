@@ -18,7 +18,7 @@ pip install google-genai supabase python-dotenv
 import os
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from google import genai
@@ -153,7 +153,7 @@ def save_to_supabase(user_input, ai_output):
         data = {
             "user_input": user_input,
             "ai_output": json.dumps(ai_output),
-            "created_at": datetime.utcnow().isoformat()
+            "created_at": datetime.now(timezone.utc).isoformat()
         }
 
         response = (
