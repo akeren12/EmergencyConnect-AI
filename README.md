@@ -1,3 +1,4 @@
+
 # 🚨 EmergencyConnect-AI
 
 > **AI-Powered Emergency Assistance Backend built with Django REST Framework, Gemini AI & Supabase**
@@ -197,8 +198,27 @@ docs/postman/EmergencyConnect-AI.postman_collection.json
     ]
 }
 ```
+```markdown
+## 🧪 Test Coverage
+
+EmergencyConnect-AI includes a comprehensive automated testing suite built with **pytest**.
+
+### Test Summary
+
+- ✅ 27 Passing Tests
+- ✅ Serializer Tests
+- ✅ View Tests
+- ✅ Authentication Flow Tests
+- ✅ AI Integration Tests (Gemini API Mocked)
+- ✅ 95% Overall Test Coverage
+
+### Coverage Report
+
+![Coverage Report](<img width="1736" height="1396" alt="Screenshot 2026-06-19 115423" src="https://github.com/user-attachments/assets/44d8bbd3-5784-481d-9398-a0f889b2b7e8" />)
+```
 
 ---
+
 
 ## 📚 Documentation
 
