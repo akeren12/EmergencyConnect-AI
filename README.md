@@ -198,7 +198,7 @@ docs/postman/EmergencyConnect-AI.postman_collection.json
     ]
 }
 ```
-```markdown
+```
 ## 🧪 Test Coverage
 
 EmergencyConnect-AI includes a comprehensive automated testing suite built with **pytest**.
@@ -215,7 +215,7 @@ EmergencyConnect-AI includes a comprehensive automated testing suite built with 
 ### Coverage Report
 
 <img width="1736" height="1396" alt="Screenshot 2026-06-19 115423" src="https://github.com/user-attachments/assets/44d8bbd3-5784-481d-9398-a0f889b2b7e8" />
-```
+
 
 ---
 
