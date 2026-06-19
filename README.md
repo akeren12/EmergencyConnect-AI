@@ -56,7 +56,7 @@ Given a user's emergency description, the system:
 
 ## 🏗 Architecture
 
-```text
+'''
              User
                 │
                 ▼
@@ -82,7 +82,7 @@ Given a user's emergency description, the system:
 
 ## 📂 Project Structure
 
-```text
+
 backend/
 │
 ├── ai_assistant/
@@ -100,7 +100,7 @@ backend/
 ├── requirements.txt
 ├── mkdocs.yml
 └── README.md
-```
+
 
 ---
 
@@ -108,41 +108,41 @@ backend/
 
 Clone the repository
 
-```bash
+
 git clone https://github.com/akeren12/EmergencyConnect-AI.git
 
 cd EmergencyConnect-AI/backend
-```
+
 
 Create virtual environment
 
-```bash
+
 python -m venv venv
-```
+
 
 Windows
 
-```bash
+
 venv\Scripts\activate
-```
+
 
 Install dependencies
 
-```bash
+
 pip install -r requirements.txt
-```
+
 
 Run migrations
 
-```bash
+
 python manage.py migrate
-```
+
 
 Start server
 
-```bash
+
 python manage.py runserver
-```
+
 
 ---
 ## 📸 Project Screenshots
@@ -151,7 +151,7 @@ python manage.py runserver
 |------------|---------------------|
 | ![Swagger UI](docs/swagger-ui.png.png) | ![MkDocs Documentation](docs/mkdocs-home.png.png) |
 docs/images/mkdocs-home.png
-```
+
 ## 📡 API Endpoints
 
 | Method | Endpoint | Description |
@@ -176,17 +176,17 @@ Available in:
 docs/postman/EmergencyConnect-AI.postman_collection.json
 ## 🤖 Sample Request
 
-```json
+
 {
     "description": "A person is unconscious and not breathing."
 }
-```
+
 
 ---
 
 ## ✅ Sample Response
 
-```json
+
 {
     "emergency_type": "Cardiac Arrest",
     "priority": "CRITICAL",
@@ -197,8 +197,8 @@ docs/postman/EmergencyConnect-AI.postman_collection.json
         "Use an AED if available."
     ]
 }
-```
-```
+
+
 ## 🧪 Test Coverage
 
 EmergencyConnect-AI includes a comprehensive automated testing suite built with **pytest**.
