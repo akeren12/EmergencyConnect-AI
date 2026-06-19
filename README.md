@@ -105,42 +105,76 @@ backend/
 
 ## 🚀 Installation
 
-Clone the repository
+Follow these steps to set up **EmergencyConnect-AI** on your local machine.
 
+### 1️⃣ Clone the Repository
 
+```bash
 git clone https://github.com/akeren12/EmergencyConnect-AI.git
-
 cd EmergencyConnect-AI/backend
+```
 
+---
 
-Create virtual environment
+### 2️⃣ Create a Virtual Environment
 
-
+```bash
 python -m venv venv
+```
 
+---
 
-Windows
+### 3️⃣ Activate the Virtual Environment
 
+#### 🪟 Windows
 
+```bash
 venv\Scripts\activate
+```
 
+#### 🐧 Linux / 🍎 macOS
 
-Install dependencies
+```bash
+source venv/bin/activate
+```
 
+---
 
+### 4️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-Run migrations
+### 5️⃣ Apply Database Migrations
 
-
+```bash
 python manage.py migrate
+```
 
+---
 
-Start server
+### 6️⃣ Start the Development Server
 
-
+```bash
 python manage.py runserver
+```
+
+---
+
+### 🎉 Open in Your Browser
+
+```
+http://127.0.0.1:8000/
+```
+
+---
+
+### ✅ You're Ready!
+
+Your local instance of **EmergencyConnect-AI** is now running and ready for development and testing.
 
 
 ---
