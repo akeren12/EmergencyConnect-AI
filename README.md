@@ -82,7 +82,7 @@ Given a user's emergency description, the system:
 
 ## 📂 Project Structure
 
-
+```text
 backend/
 │
 ├── ai_assistant/
@@ -100,7 +100,7 @@ backend/
 ├── requirements.txt
 ├── mkdocs.yml
 └── README.md
-
+```
 
 ---
 
