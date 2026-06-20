@@ -37,7 +37,10 @@ GEMINI_API_KEY = env(
     default=""
 )
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    "127.0.0.1,localhost"
+).split(",")
 
 # Application definition
 
@@ -125,6 +128,7 @@ USE_TZ = True
 # Static files
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 
