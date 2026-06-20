@@ -3,7 +3,7 @@ Views for emergency reports and resources.
 """
 from rest_framework import viewsets, filters
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import (
     EmergencyContact,
@@ -60,4 +60,4 @@ class SafetyTipViewSet(viewsets.ModelViewSet):
 
     serializer_class=SafetyTipSerializer
 
-    permission_classes=[IsAuthenticated]
+    permission_classes=[AllowAny]
