@@ -65,3 +65,5 @@ pytest-mock
 pytest-cov
 coverage
 factory-boy
+gunicorn
+psutil
