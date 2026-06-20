@@ -2,14 +2,19 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from utils.supabase_client import supabase
+from utils.supabase_client import get_supabase
 
 
 @api_view(["POST"])
 def register(request):
+    """
+    Register a new user using Supabase Authentication.
+    """
 
     email = request.data.get("email")
     password = request.data.get("password")
+
+    supabase = get_supabase()
 
     response = supabase.auth.sign_up(
         {
@@ -28,16 +33,23 @@ def register(request):
         )
 
     return Response(
-        {"error": "Registration failed"},
+        {
+            "error": "Registration failed"
+        },
         status=status.HTTP_400_BAD_REQUEST,
     )
 
 
 @api_view(["POST"])
 def login(request):
+    """
+    Login an existing user using Supabase Authentication.
+    """
 
     email = request.data.get("email")
     password = request.data.get("password")
+
+    supabase = get_supabase()
 
     response = supabase.auth.sign_in_with_password(
         {
@@ -52,10 +64,13 @@ def login(request):
                 "message": "Login successful",
                 "email": response.user.email,
                 "access_token": response.session.access_token,
-            }
+            },
+            status=status.HTTP_200_OK,
         )
 
     return Response(
-        {"error": "Invalid credentials"},
+        {
+            "error": "Invalid credentials"
+        },
         status=status.HTTP_400_BAD_REQUEST,
     )
