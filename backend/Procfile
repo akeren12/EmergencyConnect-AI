@@ -1,1 +1,1 @@
-web: gunicorn emergencyconnect.wsgi
+web: gunicorn emergencyconnect.wsgi:application --bind 0.0.0.0:$PORT
