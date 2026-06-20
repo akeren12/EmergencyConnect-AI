@@ -1,14 +1,20 @@
 """
 Views for AI-powered emergency analysis endpoints.
 """
-from django.http import JsonResponse
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .gemini_service import generate_ai_response
+
 from drf_spectacular.utils import (
     extend_schema,
     OpenApiExample,
+)
+
+from .gemini_service import generate_ai_response
+from .serializers import (
+    AIRequestSerializer,
+    AIResponseSerializer,
 )
 
 
@@ -22,6 +28,11 @@ Analyze an emergency description and generate:
 • summary
 • first aid recommendations
 """,
+    request=AIRequestSerializer,
+    responses={
+        200: AIResponseSerializer,
+        400: None,
+    },
     examples=[
         OpenApiExample(
             "Cardiac Arrest",
@@ -37,16 +48,15 @@ class AIAnalysisView(APIView):
     """
 
     def post(self, request):
+
         description = request.data.get("description")
+
         if not description:
             return Response(
                 {"error": "Description required"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         result = generate_ai_response(description)
+
         return Response(result)
-
-
-def emergency_view(request):
-    description = request.GET.get('description', '')
