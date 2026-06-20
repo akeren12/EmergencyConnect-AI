@@ -37,10 +37,7 @@ GEMINI_API_KEY = env(
     default=""
 )
 
-ALLOWED_HOSTS = os.getenv(
-    "ALLOWED_HOSTS",
-    "127.0.0.1,localhost"
-).split(",")
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
