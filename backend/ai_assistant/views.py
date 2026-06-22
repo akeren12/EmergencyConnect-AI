@@ -4,19 +4,22 @@ Views for AI-powered emergency analysis endpoints.
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import request, status
+from rest_framework import status
+
 from django.utils.decorators import method_decorator
 from django_ratelimit.decorators import ratelimit
-from .serializers import AIAnalysisSerializer
+
 from drf_spectacular.utils import (
     extend_schema,
     OpenApiExample,
 )
 
 from .gemini_service import generate_ai_response
+
 from .serializers import (
     AIRequestSerializer,
     AIResponseSerializer,
+    AIAnalysisSerializer,
 )
 
 
@@ -44,7 +47,14 @@ Analyze an emergency description and generate:
         )
     ],
 )
-@method_decorator(ratelimit(key='ip', rate='10/m', method='POST'), name='post')
+@method_decorator(
+    ratelimit(
+        key="ip",
+        rate="10/m",
+        method="POST"
+    ),
+    name="post"
+)
 class AIAnalysisView(APIView):
     """
     Analyze emergency descriptions using Gemini AI.
@@ -52,20 +62,23 @@ class AIAnalysisView(APIView):
 
     def post(self, request):
 
-        description = request.data.get("description")
+        serializer = AIAnalysisSerializer(
+            data=request.data
+        )
 
-        if not description:
-            return Response(
-                {"error": "Description required"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+        serializer.is_valid(
+            raise_exception=True
+        )
 
-        result = generate_ai_response(description)
+        description = serializer.validated_data[
+            "description"
+        ]
 
-        
-        serializer = AIAnalysisSerializer(data=request.data)
+        result = generate_ai_response(
+            description
+        )
 
-        serializer.is_valid(raise_exception=True)
-
-        description = serializer.validated_data["description"]
-        return Response(result)
+        return Response(
+            result,
+            status=status.HTTP_200_OK
+        )
