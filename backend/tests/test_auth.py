@@ -15,8 +15,6 @@ client = APIClient()
 @patch("users.views.get_supabase")
 def test_register_success(mock_get_supabase):
 
-    mock_supabase = Mock()
-
     fake_response = Mock()
 
     fake_user = Mock()
@@ -24,8 +22,10 @@ def test_register_success(mock_get_supabase):
 
     fake_response.user = fake_user
 
-    mock_supabase.auth.sign_up.return_value = fake_response
-    mock_get_supabase.return_value = mock_supabase
+    fake_supabase = Mock()
+    fake_supabase.auth.sign_up.return_value = fake_response
+
+    mock_get_supabase.return_value = fake_supabase
 
     response = client.post(
         "/api/users/register/",
@@ -44,13 +44,13 @@ def test_register_success(mock_get_supabase):
 @patch("users.views.get_supabase")
 def test_register_failure(mock_get_supabase):
 
-    mock_supabase = Mock()
-
     fake_response = Mock()
     fake_response.user = None
 
-    mock_supabase.auth.sign_up.return_value = fake_response
-    mock_get_supabase.return_value = mock_supabase
+    fake_supabase = Mock()
+    fake_supabase.auth.sign_up.return_value = fake_response
+
+    mock_get_supabase.return_value = fake_supabase
 
     response = client.post(
         "/api/users/register/",
@@ -72,8 +72,6 @@ def test_register_failure(mock_get_supabase):
 @patch("users.views.get_supabase")
 def test_login_success(mock_get_supabase):
 
-    mock_supabase = Mock()
-
     fake_response = Mock()
 
     fake_user = Mock()
@@ -85,8 +83,10 @@ def test_login_success(mock_get_supabase):
     fake_response.user = fake_user
     fake_response.session = fake_session
 
-    mock_supabase.auth.sign_in_with_password.return_value = fake_response
-    mock_get_supabase.return_value = mock_supabase
+    fake_supabase = Mock()
+    fake_supabase.auth.sign_in_with_password.return_value = fake_response
+
+    mock_get_supabase.return_value = fake_supabase
 
     response = client.post(
         "/api/users/login/",
@@ -106,13 +106,13 @@ def test_login_success(mock_get_supabase):
 @patch("users.views.get_supabase")
 def test_login_failure(mock_get_supabase):
 
-    mock_supabase = Mock()
-
     fake_response = Mock()
     fake_response.user = None
 
-    mock_supabase.auth.sign_in_with_password.return_value = fake_response
-    mock_get_supabase.return_value = mock_supabase
+    fake_supabase = Mock()
+    fake_supabase.auth.sign_in_with_password.return_value = fake_response
+
+    mock_get_supabase.return_value = fake_supabase
 
     response = client.post(
         "/api/users/login/",
