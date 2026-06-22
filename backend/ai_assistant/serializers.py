@@ -13,3 +13,19 @@ class AIResponseSerializer(serializers.Serializer):
         child=serializers.CharField()
     )
     disclaimer = serializers.CharField()
+
+class AIAnalysisSerializer(serializers.Serializer):
+
+    description = serializers.CharField(
+        max_length=1000,
+        required=True
+    )
+
+    def validate_description(self, value):
+
+        if len(value.strip()) < 10:
+            raise serializers.ValidationError(
+                "Description too short."
+            )
+
+        return value

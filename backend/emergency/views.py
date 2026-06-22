@@ -25,7 +25,7 @@ class EmergencyPagination(PageNumberPagination):
 
 class EmergencyContactViewSet(viewsets.ModelViewSet):
 
-    queryset = EmergencyContact.objects.all()
+    queryset = EmergencyContact.objects.select_related("user")
     serializer_class = EmergencyContactSerializer
     permission_classes = [IsAuthenticated]
 

@@ -1,0 +1,22 @@
+# Environment
+.env
+
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Database
+db.sqlite3
+
+# Coverage
+htmlcov/
+.coverage
+
+# VS Code
+.vscode/
+
+# Pytest
+.pytest_cache/
