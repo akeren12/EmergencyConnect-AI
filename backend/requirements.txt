@@ -67,3 +67,5 @@ coverage
 factory-boy
 gunicorn==23.0.0
 psutil
+django-cors-headers
+django-ratelimit
