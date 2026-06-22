@@ -4,8 +4,10 @@ Views for AI-powered emergency analysis endpoints.
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-
+from rest_framework import request, status
+from django.utils.decorators import method_decorator
+from django_ratelimit.decorators import ratelimit
+from .serializers import AIAnalysisSerializer
 from drf_spectacular.utils import (
     extend_schema,
     OpenApiExample,
@@ -42,6 +44,7 @@ Analyze an emergency description and generate:
         )
     ],
 )
+@method_decorator(ratelimit(key='ip', rate='10/m', method='POST'), name='post')
 class AIAnalysisView(APIView):
     """
     Analyze emergency descriptions using Gemini AI.
@@ -59,4 +62,10 @@ class AIAnalysisView(APIView):
 
         result = generate_ai_response(description)
 
+        
+        serializer = AIAnalysisSerializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+
+        description = serializer.validated_data["description"]
         return Response(result)
