@@ -4,6 +4,7 @@ Database models for emergency resources and reports.
 from django.db import models
 
 class EmergencyContact(models.Model):
+    user_id = models.CharField(max_length=255, null=True, db_index=True)
     name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
     relationship = models.CharField(max_length=50)
@@ -12,6 +13,7 @@ class EmergencyContact(models.Model):
         return self.name
 
 class EmergencyReport(models.Model):
+    user_id = models.CharField(max_length=255, null=True, db_index=True)
 
     title = models.CharField(max_length=100)
 

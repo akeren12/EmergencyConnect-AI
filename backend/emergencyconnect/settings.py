@@ -151,5 +151,23 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "EmergencyConnect-AI API",
     "DESCRIPTION": "AI-powered emergency assistance backend built with Django REST Framework",
     "VERSION": "1.0.0",
+
+    "SECHEMA_PATH_PREFIX": "/api",
+
+    "APPEND_COMPONENTS": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+            }
+        }
+    },
+
+    "SECURITY": [
+        {
+            "BearerAuth": []
+        }
+    ],
 }
 CORS_ALLOW_ALL_ORIGINS = True

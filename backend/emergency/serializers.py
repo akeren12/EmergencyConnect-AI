@@ -11,12 +11,14 @@ class EmergencyContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyContact
         fields = "__all__"
+        read_only_fields = ["user_id"]
 
 class EmergencyReportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EmergencyReport
         fields = "__all__"
+        read_only_fields = ["user_id"]
 
 class SafetyTipSerializer(serializers.ModelSerializer):
 

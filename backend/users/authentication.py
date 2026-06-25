@@ -10,6 +10,10 @@ class SupabaseUser:
         self.is_authenticated = True
 
     @property
+    def id(self):
+        return self.user_data.id
+
+    @property
     def email(self):
         return self.user_data.email
 
